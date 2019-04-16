@@ -10,26 +10,31 @@ import Foundation
 
 struct Card: Hashable {
     
+    init() {
+        self.identifier = Card.getUniqueIdentifier()
+    }
+    
+    
+    var isFaceUp = false // перевернутая карта или нет
+    var isMatched = false //
+    private(set) var identifier: Int // идентификатор карты
+    
+    private static var identifierFactory = 0 // счетчик для того, чтобы у всех карт были разные идентификаторы
+    
     var hashValue: Int {
         return self.identifier
     }
     
-    static func == (lhs: Card, rhs: Card) -> Bool {
-        return lhs.identifier == rhs.identifier
-    }
-    
-    var isFaceUp = false
-    var isMatched = false
-    private(set) var identifier: Int
-    
-    private static var identifierFactory = 0
     
     private static func getUniqueIdentifier() -> Int {
         Card.identifierFactory += 1
         return Card.identifierFactory
     }
     
-    init() {
-        self.identifier = Card.getUniqueIdentifier()
+    static func == (lhs: Card, rhs: Card) -> Bool {
+        //print("lhs.identifier \(lhs.identifier) == rhs.identifier \(rhs.identifier)")
+        return lhs.identifier == rhs.identifier
     }
+    
+    
 }

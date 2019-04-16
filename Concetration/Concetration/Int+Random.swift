@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+//arc4random_uniform возвращает случайное число в диапазоне от 0 до N - 1
 extension Int {
     var arc4random: Int {
         if self > 0 {

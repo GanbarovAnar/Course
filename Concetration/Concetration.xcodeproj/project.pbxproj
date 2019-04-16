@@ -15,6 +15,7 @@
 		41A6B8882212A4360023CE19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41A6B8862212A4360023CE19 /* Main.storyboard */; };
 		41A6B88A2212A4370023CE19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A6B8892212A4370023CE19 /* Assets.xcassets */; };
 		41A6B88D2212A4370023CE19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41A6B88B2212A4370023CE19 /* LaunchScreen.storyboard */; };
+		92AF8968224BA5F900ABBE08 /* ConcentrationInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AF8967224BA5F900ABBE08 /* ConcentrationInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		41A6B8892212A4370023CE19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41A6B88C2212A4370023CE19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41A6B88E2212A4370023CE19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92AF8967224BA5F900ABBE08 /* ConcentrationInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				411E233E22246ACF0003CEE0 /* Concentration.swift */,
 				411E234122246B420003CEE0 /* Card.swift */,
 				41A6B8842212A4360023CE19 /* ViewController.swift */,
+				92AF8967224BA5F900ABBE08 /* ConcentrationInterface.swift */,
 				41A6B8862212A4360023CE19 /* Main.storyboard */,
 				41A6B88E2212A4370023CE19 /* Info.plist */,
 				411E2345222FB3B80003CEE0 /* Int+Random.swift */,
@@ -155,6 +158,7 @@
 				41A6B8852212A4360023CE19 /* ViewController.swift in Sources */,
 				41A6B8832212A4360023CE19 /* AppDelegate.swift in Sources */,
 				411E2346222FB3B80003CEE0 /* Int+Random.swift in Sources */,
+				92AF8968224BA5F900ABBE08 /* ConcentrationInterface.swift in Sources */,
 				411E233F22246ACF0003CEE0 /* Concentration.swift in Sources */,
 				411E234222246B420003CEE0 /* Card.swift in Sources */,
 			);
