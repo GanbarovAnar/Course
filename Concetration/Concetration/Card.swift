@@ -10,13 +10,10 @@ import Foundation
 
 struct Card: Hashable {
     
-    var hashValue: Int {
-        return self.identifier
+    init() {
+        self.identifier = Card.getUniqueIdentifier()
     }
     
-    static func == (lhs: Card, rhs: Card) -> Bool {
-        return lhs.identifier == rhs.identifier
-    }
     
     var isFaceUp = false
     var isMatched = false
@@ -24,12 +21,19 @@ struct Card: Hashable {
     
     private static var identifierFactory = 0
     
+    var hashValue: Int {
+        return self.identifier
+    }
+    
+    
     private static func getUniqueIdentifier() -> Int {
         Card.identifierFactory += 1
         return Card.identifierFactory
     }
     
-    init() {
-        self.identifier = Card.getUniqueIdentifier()
+    static func == (lhs: Card, rhs: Card) -> Bool {
+        return lhs.identifier == rhs.identifier
     }
+    
+    
 }

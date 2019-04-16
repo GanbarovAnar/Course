@@ -8,54 +8,72 @@
 
 import Foundation
 
+extension Collection {
+    
+    var oneAndOnly: Element? {
+        return self.count == 1 ? self.first : nil
+    }
+}
+
 struct Concentration {
+    public var score = Int()
+    private var cardRepeat: [Int: Int] = [:]
     
     private(set) var cards = [Card]()
     
     private var indexOfOneAndOnlyFaceUpCard: Int? {
+        
         get {
-            var foundIndex: Int?
-            for index in self.cards.indices {
-                if self.cards[index].isFaceUp {
-                    if foundIndex == nil {
-                        foundIndex = index
-                    } else  {
-                        return nil
-                    }
-                }
-            }
-            return foundIndex
+            return self.cards.indices.filter { self.cards[$0].isFaceUp }.oneAndOnly
         }
+        
         set {
             for index in self.cards.indices {
                 self.cards[index].isFaceUp = (index == newValue)
             }
         }
+        
     }
     
     mutating func chooseCard(at index: Int) {
         
+        if self.cardRepeat[index] != nil{
+            self.cardRepeat[index]! += 1
+        }else{
+            self.cardRepeat[index] = 1
+        }
+        
         assert(self.cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): выбранный индекс не совпадает с картами")
         
-        //Если уже не совпавшие
         if !self.cards[index].isMatched {
-            
-            //Если есть предыдущи индекс и он не равен новому
-            if let matchIndex = self.indexOfOneAndOnlyFaceUpCard, matchIndex != index {
-                //Если индексы перевернутой и текущей совпадают, матчим их
-                if self.cards[matchIndex] == self.cards[index] {
-                    self.cards[matchIndex].isMatched = true
-                    self.cards[index].isMatched = true
+                if let matchIndex = self.indexOfOneAndOnlyFaceUpCard, matchIndex != index {
+                    
+                    if self.cards[matchIndex] == self.cards[index] {
+                        self.cards[matchIndex].isMatched = true
+                        self.cards[index].isMatched = true
+                        score += 2
+                        
+                    }else{
+                        if (self.cardRepeat[index]! != 1){
+                            if(score > -1){
+                                score -= 1
+                            }
+                        }
+                        if(self.cardRepeat[matchIndex]! != 1){
+                            if(score > -1){
+                                score -= 1
+                            }
+                        }
+                    }
+                    
+                    self.cards[index].isFaceUp = true
+                    
+                } else {
+                    self.indexOfOneAndOnlyFaceUpCard = index
                 }
-                //Текущую переварачиваем
-                self.cards[index].isFaceUp = true
-                
-            } else {
-                self.indexOfOneAndOnlyFaceUpCard = index
-            }
             
-        }
-
+        }else{  }
+        
     }
     
     init(numberOfPairsCard: Int) {
@@ -66,7 +84,8 @@ struct Concentration {
             let card = Card()
             self.cards += [card, card]
         }
-        //TODO: Перемешать карты
+        
+        self.cards.shuffle() 
     }
     
 }
